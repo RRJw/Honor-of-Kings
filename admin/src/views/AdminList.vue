@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>分类列表</h1>
+    <h1>管理员列表</h1>
    <el-table
       :data="items"
       style="width: 100%">
@@ -10,14 +10,8 @@
         width="280">
       </el-table-column>
       <el-table-column
-        prop="parents.name"
-        label="父级分类"
-        width="180"
-        >
-      </el-table-column>
-      <el-table-column
-        prop="name"
-        label="分类名称"
+        prop="username"
+        label="管理员账户"
         >
       </el-table-column>
         <el-table-column
@@ -25,7 +19,7 @@
       label="操作"
       width="200">
       <template slot-scope="scope">
-        <el-button type="text" size="small" @click="$router.push(`/categories/edit/${scope.row._id}`)">编辑</el-button>
+        <el-button type="text" size="small" @click="$router.push(`/admin_user/edit/${scope.row._id}`)">编辑</el-button>
         <el-button @click="remove(scope.row)" type="text" size="small">删除</el-button>
       </template>
     </el-table-column>
@@ -46,7 +40,7 @@ export default {
   },
   methods: {
     async fetch(){
-      const res =await this.$http.get('rest/categories')
+      const res =await this.$http.get('rest/admin_user')
       this.items = res.data
     },
     async remove(row){
@@ -55,7 +49,7 @@ export default {
           cancelButtonText: '取消',
           type: 'warning'
         }).then( async () => {
-          const res =await this.$http.delete(`rest/categories/${row._id}`)
+          const res =await this.$http.delete(`rest/admin_user/${row._id}`)
           this.fetch()
           this.$message({
             type: 'success',

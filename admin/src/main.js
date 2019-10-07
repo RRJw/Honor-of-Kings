@@ -8,6 +8,16 @@ Vue.config.productionTip = false
 import http from './http'
 Vue.prototype.$http = http
 
+Vue.mixin({
+  methods: {
+    getAuthorization(){
+      return {
+        Authorization: `Bearer ${ localStorage.token || '' }`
+      }
+    }
+  },
+})
+
 new Vue({
   router,
   render: h => h(App)
