@@ -14,3 +14,6 @@ module.exports = option => {
     await next()
   }
 }
+// 主要通过在登录请求成功后，将自定义的token返回前端保存在loclStorage中，
+// 并在axios请求配置拦截器中将localStorage中token存入请求头中，
+// 在后续进行接口请求时，利用中间件的方式对请求头中是否存在token和token是否正确进行验证。

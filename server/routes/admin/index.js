@@ -60,7 +60,7 @@ module.exports = app => {
   //   req.Model = require(`../../models/${modelName}`)
   //   next()
   // }
-  //使用中间价的方式使用登录验证模块和返回模型
+  //使用中间件的方式使用登录验证模块和返回模型
   const authMiddleware = require('../../middleware/auth')
   const authResoure = require('../../middleware/resoure')
   app.use('/admin/api/rest/:resource', authMiddleware(), authResoure(), router)
