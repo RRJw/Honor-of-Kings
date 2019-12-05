@@ -71,7 +71,7 @@ module.exports = app => {
   }) //上传到的本地的文件夹
   app.post('/admin/api/upload', authMiddleware(), upload.single('file'), async (req, res) => {
     const file = req.file
-    file.url = `http://http://118.31.15.212//upload/${file.filename}`
+    file.url = `http://118.31.15.212/upload/${file.filename}`
     res.send(file)
   })
   //登录接口
